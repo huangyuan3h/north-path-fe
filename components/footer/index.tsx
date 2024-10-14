@@ -18,7 +18,7 @@ const Footer: React.FC = () => {
         </Link>
       </div>
       <p className={styles.copyright}>
-        © {new Date().getFullYear()} North Path. All rights reserved.
+        © {new Date().getFullYear()} IT and TEA. All rights reserved.
       </p>
     </footer>
   );

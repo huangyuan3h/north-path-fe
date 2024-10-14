@@ -68,7 +68,11 @@ export const PostTile: React.FC<PostTileProps> = ({
 
   return (
     <article
-      className={clsx(styles.postTileArea, imageLoaded && styles.imageLoaded)}
+      className={clsx(
+        'masonry-item',
+        styles.postTileArea,
+        imageLoaded && styles.imageLoaded
+      )}
       style={style}
     >
       {onChecked && (

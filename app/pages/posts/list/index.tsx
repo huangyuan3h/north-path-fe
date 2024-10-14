@@ -13,6 +13,7 @@ import { useWindowWidth } from '@/utils/hooks/useWindowWidth';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { toast } from 'react-toastify';
 import Spinner from 'react-bootstrap/Spinner';
+import { MasonryContainer } from './Masonry';
 
 const limit = 20; // each time fetch posts number
 
@@ -140,30 +141,21 @@ export const PostList: React.FC<PostListProps> = ({
         )}
         ref={ref}
       >
-        <ResponsiveMasonry
-          columnsCountBreakPoints={{
-            [breakpoints.xs]: 2,
-            [breakpoints.sm]: 3,
-            [breakpoints.md]: 3,
-            [breakpoints.lg]: 4,
-            [breakpoints.xl]: 5,
-          }}
-        >
-          <Masonry gutter={'16px'}>
-            {posts.map((post, idx) => {
-              return (
-                <PostTile
-                  key={`post-tile-${idx}`}
-                  subject={post.subject}
-                  images={post.images}
-                  postId={post.postId}
-                  lazyloadImage={idx > 10}
-                  priority={idx < 5}
-                />
-              );
-            })}
-          </Masonry>
-        </ResponsiveMasonry>
+        <MasonryContainer>
+          {posts.map((post, idx) => {
+            return (
+              <PostTile
+                key={`post-tile-${idx}`}
+                subject={post.subject}
+                images={post.images}
+                postId={post.postId}
+                lazyloadImage={idx > 10}
+                priority={idx < 5}
+              />
+            );
+          })}
+        </MasonryContainer>
+
         <div className={styles.loadingContainer}>
           <div
             ref={loadingRef}
